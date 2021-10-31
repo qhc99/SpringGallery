@@ -1,7 +1,6 @@
 package com.example.learnspring;
 
 import com.example.learnspring.consumingrest.Quote;
-import com.example.learnspring.messagingredis.Receiver;
 import com.example.learnspring.relationaldataaccess.Customer;
 import com.example.learnspring.uploadingfiles.StorageProperties;
 import com.example.learnspring.uploadingfiles.StorageService;
@@ -18,11 +17,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.data.redis.listener.PatternTopic;
-import org.springframework.data.redis.listener.RedisMessageListenerContainer;
-import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,25 +32,27 @@ public class SutureBeastApplication{
   public SutureBeastApplication(JdbcTemplate jdbcTemplate){this.jdbcTemplate = jdbcTemplate;}
 
   public static void main(String[] args) {
-
     ApplicationContext ctx = SpringApplication.run(SutureBeastApplication.class, args);
-
-    StringRedisTemplate template = ctx.getBean(StringRedisTemplate.class);
-    Receiver receiver = ctx.getBean(Receiver.class);
-
-    while (receiver.getCount() == 0) {
-
-      LOGGER.info("Sending message...");
-      template.convertAndSend("chat", "Hello from Redis!");
-      try{
-        //noinspection BusyWait
-        Thread.sleep(100L);
-      }
-      catch(InterruptedException e){
-        throw new RuntimeException(e);
-      }
-    }
   }
+
+//  @SuppressWarnings("unused")
+//  public static void redisDemo(ApplicationContext ctx){
+//    StringRedisTemplate template = ctx.getBean(StringRedisTemplate.class);
+//    Receiver receiver = ctx.getBean(Receiver.class);
+//
+//    while (receiver.getCount() == 0) {
+//
+//      LOGGER.info("Sending message...");
+//      template.convertAndSend("chat", "Hello from Redis!");
+//      try{
+//        //noinspection BusyWait
+//        Thread.sleep(100L);
+//      }
+//      catch(InterruptedException e){
+//        throw new RuntimeException(e);
+//      }
+//    }
+//  }
 
   @Bean
   public RestTemplate restTemplate(RestTemplateBuilder builder) {
@@ -75,15 +71,12 @@ public class SutureBeastApplication{
       jdbcTemplate.execute("CREATE TABLE customers(" +
               "id SERIAL, first_name VARCHAR(255), last_name VARCHAR(255))");
 
-      // Split up the array of whole names into an array of first/last names
       List<Object[]> splitUpNames = Stream.of("John Woo", "Jeff Dean", "Josh Bloch", "Josh Long")
               .map(name -> name.split(" "))
               .collect(Collectors.toList());
 
-      // Use a Java 8 stream to print out each tuple of the list
       splitUpNames.forEach(name -> LOGGER.info(String.format("Inserting customer record for %s %s", name[0], name[1])));
 
-      // Uses JdbcTemplate's batchUpdate operation to bulk load data
       jdbcTemplate.batchUpdate("INSERT INTO customers(first_name, last_name) VALUES (?,?)", splitUpNames);
 
       LOGGER.info("Querying for customer records where first_name = 'Josh':");
@@ -124,14 +117,15 @@ public class SutureBeastApplication{
   }
 
   @Bean
-  CommandLineRunner init(StorageService storageService) {
+  CommandLineRunner storageDemoInit(StorageService storageService) {
     return (args) -> {
       storageService.deleteAll();
       storageService.init();
     };
   }
 
-  @Bean
+ /*
+ *  @Bean
   RedisMessageListenerContainer container(RedisConnectionFactory connectionFactory,
                                           MessageListenerAdapter listenerAdapter) {
 
@@ -156,5 +150,6 @@ public class SutureBeastApplication{
   StringRedisTemplate template(RedisConnectionFactory connectionFactory) {
     return new StringRedisTemplate(connectionFactory);
   }
+  */
 
 }

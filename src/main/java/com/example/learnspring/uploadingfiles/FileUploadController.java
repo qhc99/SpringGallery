@@ -30,8 +30,8 @@ public class FileUploadController {
     this.storageService = storageService;
   }
 
-  @GetMapping("/")
-  public String listUploadedFiles(Model model) throws IOException {
+  @GetMapping("/upload")
+  public String listUploadedFiles(Model model){
 
     model.addAttribute("files", storageService.loadAll().map(
                     path -> MvcUriComponentsBuilder.fromMethodName(FileUploadController.class,
@@ -58,11 +58,11 @@ public class FileUploadController {
     redirectAttributes.addFlashAttribute("message",
             "You successfully uploaded " + file.getOriginalFilename() + "!");
 
-    return "redirect:/";
+    return "redirect:/upload";
   }
 
   @ExceptionHandler(StorageFileNotFoundException.class)
-  public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
+  public ResponseEntity<?> handleStorageFileNotFound() {
     return ResponseEntity.notFound().build();
   }
 
