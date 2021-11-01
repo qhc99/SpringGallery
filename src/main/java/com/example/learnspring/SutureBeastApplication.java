@@ -35,25 +35,6 @@ public class SutureBeastApplication{
     ApplicationContext ctx = SpringApplication.run(SutureBeastApplication.class, args);
   }
 
-//  @SuppressWarnings("unused")
-//  public static void redisDemo(ApplicationContext ctx){
-//    StringRedisTemplate template = ctx.getBean(StringRedisTemplate.class);
-//    Receiver receiver = ctx.getBean(Receiver.class);
-//
-//    while (receiver.getCount() == 0) {
-//
-//      LOGGER.info("Sending message...");
-//      template.convertAndSend("chat", "Hello from Redis!");
-//      try{
-//        //noinspection BusyWait
-//        Thread.sleep(100L);
-//      }
-//      catch(InterruptedException e){
-//        throw new RuntimeException(e);
-//      }
-//    }
-//  }
-
   @Bean
   public RestTemplate restTemplate(RestTemplateBuilder builder) {
     return builder.build();
@@ -125,7 +106,30 @@ public class SutureBeastApplication{
   }
 
  /*
- *  @Bean
+  Redis dependency in pom.xml
+  Need to start redis server
+  use method redisDemo in main.
+
+  @SuppressWarnings("unused")
+  public static void redisDemo(ApplicationContext ctx){
+    StringRedisTemplate template = ctx.getBean(StringRedisTemplate.class);
+    Receiver receiver = ctx.getBean(Receiver.class);
+
+    while (receiver.getCount() == 0) {
+
+      LOGGER.info("Sending message...");
+      template.convertAndSend("chat", "Hello from Redis!");
+      try{
+        //noinspection BusyWait
+        Thread.sleep(100L);
+      }
+      catch(InterruptedException e){
+        throw new RuntimeException(e);
+      }
+    }
+  }
+
+  @Bean
   RedisMessageListenerContainer container(RedisConnectionFactory connectionFactory,
                                           MessageListenerAdapter listenerAdapter) {
 
