@@ -1,8 +1,10 @@
 package com.example.learnspring.uploadingfiles;
 
+
 import java.io.IOException;
 import java.util.stream.Collectors;
 
+import com.example.learnspring.SutureBeastApplication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -31,13 +33,12 @@ public class FileUploadController {
   }
 
   @GetMapping("/upload")
-  public String listUploadedFiles(Model model){
+  public String listUploadedFiles(Model model) throws IOException{
 
     model.addAttribute("files", storageService.loadAll().map(
                     path -> MvcUriComponentsBuilder.fromMethodName(FileUploadController.class,
                             "serveFile", path.getFileName().toString()).build().toUri().toString())
             .collect(Collectors.toList()));
-
     return "uploadForm";
   }
 
@@ -50,19 +51,18 @@ public class FileUploadController {
             "attachment; filename=\"" + file.getFilename() + "\"").body(file);
   }
 
-  @PostMapping("/")
+  @PostMapping("/upload")
   public String handleFileUpload(@RequestParam("file") MultipartFile file,
                                  RedirectAttributes redirectAttributes) {
-
     storageService.store(file);
     redirectAttributes.addFlashAttribute("message",
             "You successfully uploaded " + file.getOriginalFilename() + "!");
 
-    return "redirect:/upload";
+    return  "redirect:/upload";
   }
 
   @ExceptionHandler(StorageFileNotFoundException.class)
-  public ResponseEntity<?> handleStorageFileNotFound() {
+  public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
     return ResponseEntity.notFound().build();
   }
 

@@ -27,7 +27,7 @@ import java.util.stream.Stream;
 @EnableConfigurationProperties(StorageProperties.class)
 public class SutureBeastApplication{
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(SutureBeastApplication.class);
+  public static final Logger LOGGER = LoggerFactory.getLogger(SutureBeastApplication.class);
 
   public SutureBeastApplication(JdbcTemplate jdbcTemplate){this.jdbcTemplate = jdbcTemplate;}
 
