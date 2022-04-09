@@ -26,9 +26,9 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ScheduledTasks {
+public class LogTimerTasks {
 
-  private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
+  private static final Logger log = LoggerFactory.getLogger(LogTimerTasks.class);
 
   private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 

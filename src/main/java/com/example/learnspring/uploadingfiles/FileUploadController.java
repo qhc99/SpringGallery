@@ -20,7 +20,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
+/**
+ * will be blocked by ldap security
+ */
 @Controller
 public class FileUploadController {
 
@@ -32,7 +34,7 @@ public class FileUploadController {
   }
 
   @GetMapping("/upload")
-  public String listUploadedFiles(Model model) throws IOException{
+  public String listUploadedFiles(Model model) {
 
     model.addAttribute("files", storageService.loadAll().map(
                     path -> MvcUriComponentsBuilder.fromMethodName(FileUploadController.class,
