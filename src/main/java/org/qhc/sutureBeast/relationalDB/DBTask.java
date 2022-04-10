@@ -1,4 +1,4 @@
-package org.qhc.sutureBeast.relationaldataaccess;
+package org.qhc.sutureBeast.relationalDB;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,7 +35,7 @@ public class DBTask {
   @Bean
   public CommandLineRunner runDB() {
     return args -> {
-      LOGGER.info("-=Creating tables=-");
+      LOGGER.info("-------Creating tables-------");
 
       jdbcTemplate.execute("DROP TABLE customers IF EXISTS");
       jdbcTemplate.execute("CREATE TABLE customers(" +

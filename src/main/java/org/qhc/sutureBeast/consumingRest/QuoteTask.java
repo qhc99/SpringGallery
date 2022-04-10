@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
@@ -36,15 +35,5 @@ public class QuoteTask {
   @Bean
   public CommandLineRunner runQuote(RestTemplate restTemplate) {
     return runner;
-  }
-
-
-  @Scheduled(fixedRate = 20000)
-  public void scheduledQuotes() {
-    try {
-      runner.run((String[]) null);
-    } catch (Exception e) {
-      LOGGER.warn(e.getMessage());
-    }
   }
 }

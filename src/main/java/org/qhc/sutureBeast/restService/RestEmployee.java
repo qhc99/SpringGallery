@@ -7,15 +7,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-class Employee {
+class RestEmployee {
 
   private @Id @GeneratedValue Long id;
   private String name;
   private String role;
 
-  public Employee() {}
+  public RestEmployee() {}
 
-  Employee(String name, String role) {
+  RestEmployee(String name, String role) {
 
     this.name = name;
     this.role = role;
@@ -50,9 +50,9 @@ class Employee {
 
     if (this == o)
       return true;
-    if (!(o instanceof Employee))
+    if (!(o instanceof RestEmployee))
       return false;
-    Employee employee = (Employee) o;
+    RestEmployee employee = (RestEmployee) o;
     return Objects.equals(this.id, employee.id) && Objects.equals(this.name, employee.name)
             && Objects.equals(this.role, employee.role);
   }

@@ -12,18 +12,17 @@ import org.springframework.stereotype.Component;
 public class DatabaseLoader { // <2>
 
   private final Logger LOGGER = LoggerFactory.getLogger(DatabaseLoader.class);
-  private final ReactEmployeeRepository repository;
+  private final EmployeeRepository repository;
 
   @Autowired // <3>
-  public DatabaseLoader(ReactEmployeeRepository repository) {
+  public DatabaseLoader(EmployeeRepository repository) {
     this.repository = repository;
   }
 
   @Bean
   public CommandLineRunner addEntry() { // <4>
-    return args->{
-      LOGGER.info("----------------react entry added---------------.");
-      this.repository.save(new ReactEmployee("Frodo", "Baggins", "ring bearer"));
+    return args -> {
+      this.repository.save(new Employee("Frodo", "Baggins", "ring bearer"));
     };
   }
 }

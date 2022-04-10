@@ -1,4 +1,4 @@
-package org.qhc.sutureBeast.relationaldataaccess;
+package org.qhc.sutureBeast.relationalDB;
 
 
 public class Customer {

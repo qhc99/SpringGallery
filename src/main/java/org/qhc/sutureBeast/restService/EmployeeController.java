@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 class EmployeeController {
 
-  private final EmployeeRepository repository;
+  private final RestEmployeeRepository repository;
 
-  EmployeeController(EmployeeRepository repository) {
+  EmployeeController(RestEmployeeRepository repository) {
     this.repository = repository;
   }
 
@@ -23,27 +23,27 @@ class EmployeeController {
   // Aggregate root
   // tag::get-aggregate-root[]
   @GetMapping("/employees")
-  List<Employee> all() {
+  List<RestEmployee> all() {
     return repository.findAll();
   }
   // end::get-aggregate-root[]
 
   @PostMapping("/employees")
-  Employee newEmployee(@RequestBody Employee newEmployee) {
+  RestEmployee newEmployee(@RequestBody RestEmployee newEmployee) {
     return repository.save(newEmployee);
   }
 
   // Single item
 
   @GetMapping("/employees/{id}")
-  Employee one(@PathVariable Long id) {
+  RestEmployee one(@PathVariable Long id) {
 
     return repository.findById(id)
             .orElseThrow(() -> new EmployeeNotFoundException(id));
   }
 
   @PutMapping("/employees/{id}")
-  Employee replaceEmployee(@RequestBody Employee newEmployee, @PathVariable Long id) {
+  RestEmployee replaceEmployee(@RequestBody RestEmployee newEmployee, @PathVariable Long id) {
 
     return repository.findById(id)
             .map(employee -> {

@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import java.util.Objects;
 
 @Entity // <1>
-public class ReactEmployee {
+public class Employee {
 
   private
   @Id
@@ -18,9 +18,9 @@ public class ReactEmployee {
   private String lastName;
   private String description;
 
-  public ReactEmployee() {}
+  public Employee() {}
 
-  public ReactEmployee(String firstName, String lastName, String description) {
+  public Employee(String firstName, String lastName, String description) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.description = description;
@@ -30,7 +30,7 @@ public class ReactEmployee {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    ReactEmployee employee = (ReactEmployee) o;
+    Employee employee = (Employee) o;
     return Objects.equals(id, employee.id) &&
             Objects.equals(firstName, employee.firstName) &&
             Objects.equals(lastName, employee.lastName) &&
