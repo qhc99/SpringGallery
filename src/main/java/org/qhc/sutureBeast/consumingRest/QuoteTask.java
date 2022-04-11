@@ -39,7 +39,7 @@ public class QuoteTask {
 
 
   @Bean
-  public CommandLineRunner runQuote(RestTemplate restTemplate) {
+  public CommandLineRunner runQuote() {
     return runner;
   }
 }
