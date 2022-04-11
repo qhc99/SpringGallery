@@ -49,7 +49,7 @@ public class FileUploadTests {
             "text/plain", "Spring Framework".getBytes());
     this.mvc.perform(multipart("/upload").file(multipartFile))
             .andExpect(status().isFound())
-            .andExpect(header().string("Location", "/"));
+            .andExpect(header().string("Location", "/upload"));
 
     then(this.storageService).should().store(multipartFile);
   }
