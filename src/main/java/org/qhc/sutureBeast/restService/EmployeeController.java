@@ -1,17 +1,13 @@
 package org.qhc.sutureBeast.restService;
 
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
 
 @RestController
 class EmployeeController {
+
+  public static final String url = "employees";
 
   private final RestEmployeeRepository repository;
 
@@ -22,27 +18,27 @@ class EmployeeController {
 
   // Aggregate root
   // tag::get-aggregate-root[]
-  @GetMapping("/employees")
+  @GetMapping("/" + url)
   List<RestEmployee> all() {
     return repository.findAll();
   }
   // end::get-aggregate-root[]
 
-  @PostMapping("/employees")
+  @PostMapping("/" + url)
   RestEmployee newEmployee(@RequestBody RestEmployee newEmployee) {
     return repository.save(newEmployee);
   }
 
   // Single item
 
-  @GetMapping("/employees/{id}")
+  @GetMapping("/" + url + "/{id}")
   RestEmployee one(@PathVariable Long id) {
 
     return repository.findById(id)
             .orElseThrow(() -> new EmployeeNotFoundException(id));
   }
 
-  @PutMapping("/employees/{id}")
+  @PutMapping("/" + url + "/{id}")
   RestEmployee replaceEmployee(@RequestBody RestEmployee newEmployee, @PathVariable Long id) {
 
     return repository.findById(id)
@@ -57,7 +53,7 @@ class EmployeeController {
             });
   }
 
-  @DeleteMapping("/employees/{id}")
+  @DeleteMapping("/" + url + "/{id}")
   void deleteEmployee(@PathVariable Long id) {
     repository.deleteById(id);
   }

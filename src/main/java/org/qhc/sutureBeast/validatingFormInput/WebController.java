@@ -14,17 +14,19 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Controller
 public class WebController implements WebMvcConfigurer {
 
+  public static final String url = "validation";
+
   @Override
   public void addViewControllers(ViewControllerRegistry registry) {
     registry.addViewController("/validRes").setViewName("validRes");
   }
 
-  @GetMapping("/validation")
+  @GetMapping("/" + url)
   public String showForm(PersonForm personForm) {
     return "validateForm";
   }
 
-  @PostMapping("/validation")
+  @PostMapping("/" + url)
   public String checkPersonInfo(@Valid PersonForm personForm, BindingResult bindingResult) {
     if (bindingResult.hasErrors()) {
       return "validateForm";

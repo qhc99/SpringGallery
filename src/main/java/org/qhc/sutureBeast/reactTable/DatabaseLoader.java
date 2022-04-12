@@ -1,4 +1,4 @@
-package org.qhc.sutureBeast.reactApp;
+package org.qhc.sutureBeast.reactTable;
 
 
 import org.slf4j.Logger;
@@ -21,8 +21,6 @@ public class DatabaseLoader { // <2>
 
   @Bean
   public CommandLineRunner addEntry() { // <4>
-    return args -> {
-      this.repository.save(new Employee("Frodo", "Baggins", "ring bearer"));
-    };
+    return args -> this.repository.save(new Employee("Frodo", "Baggins", "ring bearer"));
   }
 }
