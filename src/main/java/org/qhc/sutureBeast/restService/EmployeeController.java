@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-class EmployeeController {
+public class EmployeeController {
 
   public static final String url = "employees";
 

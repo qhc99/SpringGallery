@@ -12,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 @Controller
-public class WebController implements WebMvcConfigurer {
+public class ValidateFormController implements WebMvcConfigurer {
 
   public static final String url = "validation";
 
