@@ -1,7 +1,8 @@
 package org.qhc.sutureBeast;
 
 
-import org.qhc.sutureBeast.reactTable.ReactTableController;
+import org.qhc.sutureBeast.VueDemo.VueDemoController;
+import org.qhc.sutureBeast.reactDemo.ReactTableController;
 import org.qhc.sutureBeast.restService.EmployeeController;
 import org.qhc.sutureBeast.restService.GreetingController;
 import org.qhc.sutureBeast.uploadingFiles.FileUploadController;
@@ -22,7 +23,8 @@ public class HomeController {
                     EmployeeController.url,
                     GreetingController.url,
                     FileUploadController.url,
-                    ValidateFormController.url
+                    ValidateFormController.url,
+                    VueDemoController.url
             }));
     return "home";
   }
