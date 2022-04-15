@@ -20,6 +20,7 @@ import java.util.concurrent.Executor;
 @EnableAsync
 public class SutureBeastApplication {
   private final Logger LOGGER = LoggerFactory.getLogger(SutureBeastApplication.class);
+
   public static void main(String[] args) {
     SpringApplication.run(SutureBeastApplication.class, args);
   }

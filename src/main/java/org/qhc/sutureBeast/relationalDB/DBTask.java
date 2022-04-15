@@ -22,7 +22,7 @@ public class DBTask {
   final JdbcTemplate jdbcTemplate;
 
   @Autowired
-  public DBTask(JdbcTemplate jdbcTemplate){
+  public DBTask(JdbcTemplate jdbcTemplate) {
     this.jdbcTemplate = jdbcTemplate;
   }
 

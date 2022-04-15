@@ -1,19 +1,21 @@
 package org.qhc.sutureBeast.restService;
 
-import java.util.Objects;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
 class RestEmployee {
 
-  private @Id @GeneratedValue Long id;
+  private @Id
+  @GeneratedValue
+  Long id;
   private String name;
   private String role;
 
-  public RestEmployee() {}
+  public RestEmployee() {
+  }
 
   RestEmployee(String name, String role) {
 

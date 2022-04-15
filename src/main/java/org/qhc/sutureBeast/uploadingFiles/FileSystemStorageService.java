@@ -1,6 +1,13 @@
 package org.qhc.sutureBeast.uploadingFiles;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.stereotype.Service;
+import org.springframework.util.FileSystemUtils;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -10,13 +17,6 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Objects;
 import java.util.stream.Stream;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
-import org.springframework.stereotype.Service;
-import org.springframework.util.FileSystemUtils;
-import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class FileSystemStorageService implements StorageService {
@@ -46,8 +46,7 @@ public class FileSystemStorageService implements StorageService {
         Files.copy(inputStream, destinationFile,
                 StandardCopyOption.REPLACE_EXISTING);
       }
-    }
-    catch (IOException e) {
+    } catch (IOException e) {
       throw new StorageException("Failed to store file.", e);
     }
   }
@@ -58,8 +57,7 @@ public class FileSystemStorageService implements StorageService {
       return Files.walk(this.rootLocation, 1)
               .filter(path -> !path.equals(this.rootLocation))
               .map(this.rootLocation::relativize);
-    }
-    catch (IOException e) {
+    } catch (IOException e) {
       throw new StorageException("Failed to read stored files", e);
     }
 
@@ -83,8 +81,7 @@ public class FileSystemStorageService implements StorageService {
                 "Could not read file: " + filename);
 
       }
-    }
-    catch (MalformedURLException e) {
+    } catch (MalformedURLException e) {
       throw new StorageFileNotFoundException("Could not read file: " + filename, e);
     }
   }
@@ -98,8 +95,7 @@ public class FileSystemStorageService implements StorageService {
   public void init() {
     try {
       Files.createDirectories(rootLocation);
-    }
-    catch (IOException e) {
+    } catch (IOException e) {
       throw new StorageException("Could not initialize storage", e);
     }
   }

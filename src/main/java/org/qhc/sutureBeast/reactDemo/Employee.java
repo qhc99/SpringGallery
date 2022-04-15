@@ -1,7 +1,6 @@
 package org.qhc.sutureBeast.reactDemo;
 
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,7 +17,8 @@ public class Employee {
   private String lastName;
   private String description;
 
-  public Employee() {}
+  public Employee() {
+  }
 
   public Employee(String firstName, String lastName, String description) {
     this.firstName = firstName;

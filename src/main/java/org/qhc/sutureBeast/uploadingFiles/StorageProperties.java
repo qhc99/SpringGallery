@@ -1,4 +1,5 @@
 package org.qhc.sutureBeast.uploadingFiles;
+
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties("storage")

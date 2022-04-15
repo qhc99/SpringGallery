@@ -25,8 +25,7 @@ public class QuoteTask {
     try {
       quote = restT.getForObject(
               "https://quoters.apps.pcfone.io/api/random", Quote.class);
-    }
-    catch (ResourceAccessException e){
+    } catch (ResourceAccessException e) {
       LOGGER.warn(e.getMessage());
     }
     if (quote != null) {
