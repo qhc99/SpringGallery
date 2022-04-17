@@ -15,8 +15,8 @@ class LoadDatabase {
   CommandLineRunner initDatabase(RestEmployeeRepository repository) {
 
     return args -> {
-      log.info("Preloading " + repository.save(new RestEmployee("Bilbo Baggins", "burglar")));
-      log.info("Preloading " + repository.save(new RestEmployee("Frodo Baggins", "thief")));
+      log.info("Preloading " + repository.save(new RestEmployee("Bilbo","Baggins", "burglar")));
+      log.info("Preloading " + repository.save(new RestEmployee("Frodo","Baggins", "thief")));
     };
   }
 }

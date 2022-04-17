@@ -14,17 +14,18 @@ import java.time.Duration;
 
 @Component
 @Service
-public class QuoteTask {
+public class DogApiTask {
 
-  public static final Logger LOGGER = LoggerFactory.getLogger(QuoteTask.class);
+  public static final Logger LOGGER = LoggerFactory.getLogger(DogApiTask.class);
 
-  RestTemplate restT = new RestTemplateBuilder().setConnectTimeout(Duration.ofMillis(800)).build();
+  RestTemplate restT = new RestTemplateBuilder().setConnectTimeout(Duration.ofMillis(1000)).build();
 
   CommandLineRunner runner = args -> {
-    Quote quote = null;
+    DogBreeds quote = null;
     try {
+      LOGGER.info("----------Consuming Dog Breeds API----------");
       quote = restT.getForObject(
-              "https://quoters.apps.pcfone.io/api/random", Quote.class);
+              "https://dog.ceo/api/breeds/list/all", DogBreeds.class);
     } catch (ResourceAccessException e) {
       LOGGER.warn(e.getMessage());
     }
