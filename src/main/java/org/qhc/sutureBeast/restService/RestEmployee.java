@@ -5,18 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Objects;
 
-
-
-import java.util.Objects;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
 @Entity
 class RestEmployee {
 
-  private @Id @GeneratedValue Long id;
+  private @Id
+  @GeneratedValue Long id;
   private String firstName;
   private String lastName;
   private String role;
