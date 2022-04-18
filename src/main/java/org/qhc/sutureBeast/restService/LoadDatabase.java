@@ -19,4 +19,24 @@ class LoadDatabase {
       log.info("Preloading " + repository.save(new RestEmployee("Frodo", "Baggins", "thief")));
     };
   }
+
+  @Bean
+  CommandLineRunner initDatabase(RestEmployeeRepository employeeRepository, OrderRepository orderRepository) {
+
+    return args -> {
+      employeeRepository.save(new RestEmployee("Bilbo", "Baggins", "burglar"));
+      employeeRepository.save(new RestEmployee("Frodo", "Baggins", "thief"));
+
+      employeeRepository.findAll().forEach(employee -> log.info("Preloaded " + employee));
+
+
+      orderRepository.save(new Order("MacBook Pro", Status.COMPLETED));
+      orderRepository.save(new Order("iPhone", Status.IN_PROGRESS));
+
+      orderRepository.findAll().forEach(order -> {
+        log.info("Preloaded " + order);
+      });
+
+    };
+  }
 }

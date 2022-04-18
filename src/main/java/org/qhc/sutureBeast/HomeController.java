@@ -5,6 +5,7 @@ import org.qhc.sutureBeast.VueDemo.VueDemoController;
 import org.qhc.sutureBeast.reactDemo.ReactTableController;
 import org.qhc.sutureBeast.restService.EmployeeController;
 import org.qhc.sutureBeast.restService.GreetingController;
+import org.qhc.sutureBeast.restService.OrderController;
 import org.qhc.sutureBeast.uploadingFiles.FileUploadController;
 import org.qhc.sutureBeast.validatingFormInput.ValidateFormController;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,8 @@ public class HomeController {
                     GreetingController.url,
                     FileUploadController.url,
                     ValidateFormController.url,
-                    VueDemoController.url
+                    VueDemoController.url,
+                    OrderController.url
             }));
     return "home";
   }
