@@ -9,15 +9,15 @@ import org.springframework.stereotype.Component;
 @Component // <1>
 public class DatabaseLoader { // <2>
 
-  private final EmployeeRepository repository;
+  private final ReactEmployeeRepository repository;
 
   @Autowired // <3>
-  public DatabaseLoader(EmployeeRepository repository) {
+  public DatabaseLoader(ReactEmployeeRepository repository) {
     this.repository = repository;
   }
 
   @Bean
   public CommandLineRunner addEntry() { // <4>
-    return args -> this.repository.save(new Employee("Frodo", "Baggins", "ring bearer"));
+    return args -> this.repository.save(new ReactEmployee("Frodo", "Baggins", "ring bearer"));
   }
 }

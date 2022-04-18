@@ -13,7 +13,6 @@ import org.springframework.web.client.RestTemplate;
 import java.time.Duration;
 
 @Component
-@Service
 public class DogApiTask {
 
   public static final Logger LOGGER = LoggerFactory.getLogger(DogApiTask.class);

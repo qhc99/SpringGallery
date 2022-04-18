@@ -85,7 +85,7 @@ class RestEmployee {
 
   @Override
   public String toString() {
-    return "Employee{" + "id=" + this.id + ", firstName='" + this.firstName + '\'' + ", lastName='" + this.lastName
+    return "RestEmployee{" + "id=" + this.id + ", firstName='" + this.firstName + '\'' + ", lastName='" + this.lastName
             + '\'' + ", role='" + this.role + '\'' + '}';
   }
 }

@@ -13,15 +13,15 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
-public class EmployeeController {
+public class RestEmployeeController {
 
-  public static final String url = "employees";
+  public static final String url = "RestEmployees";
 
   private final RestEmployeeRepository repository;
 
-  private final EmployeeModelAssembler assembler;
+  private final RestEmployeeModelAssembler assembler;
 
-  EmployeeController(RestEmployeeRepository repository, EmployeeModelAssembler assembler) {
+  RestEmployeeController(RestEmployeeRepository repository, RestEmployeeModelAssembler assembler) {
 
     this.repository = repository;
     this.assembler = assembler;
@@ -35,7 +35,7 @@ public class EmployeeController {
             .map(assembler::toModel) //
             .collect(Collectors.toList());
 
-    return CollectionModel.of(employees, linkTo(methodOn(EmployeeController.class).all()).withSelfRel());
+    return CollectionModel.of(employees, linkTo(methodOn(RestEmployeeController.class).all()).withSelfRel());
   }
 
   @PostMapping("/" + url)

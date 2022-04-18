@@ -3,7 +3,7 @@ package org.qhc.sutureBeast;
 
 import org.qhc.sutureBeast.VueDemo.VueDemoController;
 import org.qhc.sutureBeast.reactDemo.ReactTableController;
-import org.qhc.sutureBeast.restService.EmployeeController;
+import org.qhc.sutureBeast.restService.RestEmployeeController;
 import org.qhc.sutureBeast.restService.GreetingController;
 import org.qhc.sutureBeast.restService.OrderController;
 import org.qhc.sutureBeast.uploadingFiles.FileUploadController;
@@ -21,7 +21,7 @@ public class HomeController {
     model.addAttribute("app_urls",
             List.of(new String[]{
                     ReactTableController.url,
-                    EmployeeController.url,
+                    RestEmployeeController.url,
                     GreetingController.url,
                     FileUploadController.url,
                     ValidateFormController.url,

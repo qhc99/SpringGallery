@@ -11,18 +11,18 @@ class App extends React.Component { // <1>
 
     constructor(props) {
         super(props);
-        this.state = {employees: []};
+        this.state = {reactEmployees: []};
     }
 
     componentDidMount() { // <2>
-        client({method: 'GET', path: '/api/employees'}).done(response => {
-            this.setState({employees: response.entity._embedded.employees});
+        client({method: 'GET', path: '/api/reactEmployees'}).done(response => {
+            this.setState({reactEmployees: response.entity._embedded.reactEmployees});
         });
     }
 
     render() { // <3>
         return (
-            <EmployeeList employees={this.state.employees}/>
+            <EmployeeList employees={this.state.reactEmployees}/>
         )
     }
 }

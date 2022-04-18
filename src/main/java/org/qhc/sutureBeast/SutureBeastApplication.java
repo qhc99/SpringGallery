@@ -7,7 +7,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
@@ -17,7 +16,6 @@ import java.util.concurrent.Executor;
 @SpringBootApplication
 @EnableScheduling
 @EnableConfigurationProperties(StorageProperties.class)
-@EnableAsync
 public class SutureBeastApplication {
   private final Logger LOGGER = LoggerFactory.getLogger(SutureBeastApplication.class);
 

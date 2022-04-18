@@ -9,13 +9,13 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Component
-public class EmployeeModelAssembler implements RepresentationModelAssembler<RestEmployee, EntityModel<RestEmployee>> {
+public class RestEmployeeModelAssembler implements RepresentationModelAssembler<RestEmployee, EntityModel<RestEmployee>> {
 
   @Override
   public EntityModel<RestEmployee> toModel(RestEmployee employee) {
 
     return EntityModel.of(employee, //
-            linkTo(methodOn(EmployeeController.class).one(employee.getId())).withSelfRel(),
-            linkTo(methodOn(EmployeeController.class).all()).withRel("employees"));
+            linkTo(methodOn(RestEmployeeController.class).one(employee.getId())).withSelfRel(),
+            linkTo(methodOn(RestEmployeeController.class).all()).withRel("RestEmployees"));
   }
 }

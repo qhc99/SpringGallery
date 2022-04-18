@@ -6,8 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Objects;
 
+/**
+ * The name of api depends on the name of this class!!
+ */
 @Entity // <1>
-public class Employee {
+public class ReactEmployee {
 
   private
   @Id
@@ -17,10 +20,10 @@ public class Employee {
   private String lastName;
   private String description;
 
-  public Employee() {
+  public ReactEmployee() {
   }
 
-  public Employee(String firstName, String lastName, String description) {
+  public ReactEmployee(String firstName, String lastName, String description) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.description = description;
@@ -30,11 +33,11 @@ public class Employee {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    Employee employee = (Employee) o;
-    return Objects.equals(id, employee.id) &&
-            Objects.equals(firstName, employee.firstName) &&
-            Objects.equals(lastName, employee.lastName) &&
-            Objects.equals(description, employee.description);
+    ReactEmployee reactEmployee = (ReactEmployee) o;
+    return Objects.equals(id, reactEmployee.id) &&
+            Objects.equals(firstName, reactEmployee.firstName) &&
+            Objects.equals(lastName, reactEmployee.lastName) &&
+            Objects.equals(description, reactEmployee.description);
   }
 
   @Override
@@ -77,7 +80,7 @@ public class Employee {
 
   @Override
   public String toString() {
-    return "Employee{" +
+    return "ReactEmployee{" +
             "id=" + id +
             ", firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
