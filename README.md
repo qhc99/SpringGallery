@@ -1,1 +1,1 @@
-Spring guides and tutorial in one project.
+Collected interesting applications in learning backend and frontend framework.
