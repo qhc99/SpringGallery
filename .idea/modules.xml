@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SutureBeast.iml" filepath="$PROJECT_DIR$/SutureBeast.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WebAppGallery.iml" filepath="$PROJECT_DIR$/WebAppGallery.iml" />
     </modules>
   </component>
 </project>
