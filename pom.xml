@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.qhc</groupId>
-    <artifactId>SutureBeast</artifactId>
+    <artifactId>WebAppGallery</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>SutureBeast</name>
     <description>Features of Spring boot</description>
