@@ -1,6 +1,6 @@
 package org.qhc.sutureBeast;
 
-import org.qhc.sutureBeast.uploadingFiles.StorageProperties;
+import org.qhc.sutureBeast.demos.uploadingFiles.StorageProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -10,17 +10,22 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 import java.util.concurrent.Executor;
-
+// TODO add github auth test
+// TODO add blog list of web app
 @SpringBootApplication
 @EnableScheduling
 @EnableConfigurationProperties(StorageProperties.class)
-public class SutureBeastApplication {
-  private final Logger LOGGER = LoggerFactory.getLogger(SutureBeastApplication.class);
+@EnableWebSecurity
+public class GalleryEntry {
+
+  public static final String project_owner = "qhc99";
+  private final Logger LOGGER = LoggerFactory.getLogger(GalleryEntry.class);
 
   public static void main(String[] args) {
-    SpringApplication.run(SutureBeastApplication.class, args);
+    SpringApplication.run(GalleryEntry.class, args);
   }
 
   @Scheduled(fixedRate = 60000)

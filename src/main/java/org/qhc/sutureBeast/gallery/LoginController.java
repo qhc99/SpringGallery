@@ -1,5 +1,4 @@
-package org.qhc.sutureBeast;
-
+package org.qhc.sutureBeast.gallery;
 
 import org.qhc.sutureBeast.demos.VueDemo.VueDemoController;
 import org.qhc.sutureBeast.demos.reactDemo.ReactTableController;
@@ -8,6 +7,7 @@ import org.qhc.sutureBeast.demos.restService.OrderController;
 import org.qhc.sutureBeast.demos.restService.RestEmployeeController;
 import org.qhc.sutureBeast.demos.uploadingFiles.FileUploadController;
 import org.qhc.sutureBeast.demos.validatingFormInput.ValidateFormController;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,22 +15,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 
 @Controller
-public class HomeController {
+public class LoginController {
 
-  public static final String[] allUrls = new String[]{
-          ReactTableController.url,
-          RestEmployeeController.url,
-          GreetingController.url,
-          FileUploadController.url,
-          ValidateFormController.url,
-          VueDemoController.url,
-          OrderController.url
-  };
+  public static final String url = "login";
 
-  @GetMapping("/")
-  public String home(Model model) {
-    model.addAttribute("app_urls",
-            List.of(allUrls));
-    return "home";
+  @GetMapping("/"+url)
+  public String home() {
+    return "login";
   }
 }
