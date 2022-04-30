@@ -37,7 +37,7 @@ public class GithubAuthenticationProvider implements AuthenticationProvider {
       return null;
     }
 
-    if (github_user_info != null && github_user_info.login != null && github_user_info.login.equals(name)) {
+    if (github_user_info != null && github_user_info.login() != null && github_user_info.login().equals(name)) {
       LOGGER.info("------------------auth success-------------------.");
       return new PreAuthenticatedAuthenticationToken(new Object(), new Object(),
               Arrays.stream(HomeController.allUrls).map((s) -> (GrantedAuthority) () -> s).toList());
