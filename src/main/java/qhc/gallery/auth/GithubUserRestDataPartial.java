@@ -6,5 +6,5 @@ import java.io.Serializable;
 
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public record GithubUserInfo(String login) implements Serializable {
+public record GithubUserRestDataPartial(String login) implements Serializable {
 }

@@ -30,9 +30,9 @@ public class GithubUsernameRestAuthenticationProvider implements AuthenticationP
           throws AuthenticationException {
 
     String name = authentication.getName();
-    GithubUserInfo github_user_info;
+    GithubUserRestDataPartial github_user_info;
     try {
-      github_user_info = restT.getForObject("https://api.github.com/users/" + name, GithubUserInfo.class);
+      github_user_info = restT.getForObject("https://api.github.com/users/" + name, GithubUserRestDataPartial.class);
     } catch (ResourceAccessException e) {
       return null;
     }
