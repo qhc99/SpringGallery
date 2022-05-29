@@ -1,7 +1,6 @@
 
 #spring.devtools.restart.trigger-file="./.trigger"
 spring:
-
   servlet:
     multipart:
       max-file-size: 100MB
@@ -20,7 +19,6 @@ spring:
       name: me
       password: 123
       roles: admin
-
     oauth2:
       client:
         registration:
@@ -31,6 +29,9 @@ spring:
   thymeleaf:
     cache: false
 
+  jpa:
+    open-in-view: false
+
 
 management:
   server:
@@ -40,6 +41,7 @@ management:
 
 server:
   port: 8443
+
   ssl:
     key-store: "classpath:keystore//httpskey.p12"
     key-alias: tomcathttps

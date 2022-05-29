@@ -49,7 +49,7 @@ public class OrderController {
     return assembler.toModel(order);
   }
 
-  @PostMapping("/" + url)
+  @PostMapping
   ResponseEntity<EntityModel<Order>> newOrder(@RequestBody Order order) {
 
     order.setStatus(Status.IN_PROGRESS);

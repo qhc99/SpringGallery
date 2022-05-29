@@ -14,11 +14,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SimpleSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
-  private final GithubRestAuthenticationProvider authProvider;
+  private final GithubUsernameRestAuthenticationProvider authProvider;
 
 
   @Autowired
-  SimpleSecurityConfig(GithubRestAuthenticationProvider a) {
+  SimpleSecurityConfig(GithubUsernameRestAuthenticationProvider a) {
     authProvider = a;
   }
 
@@ -26,28 +26,6 @@ public class SimpleSecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(AuthenticationManagerBuilder auth) {
     auth.authenticationProvider(authProvider);
   }
-
-//  @Bean
-//  SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//    return http
-//            .requiresChannel(channel ->
-//                    channel.anyRequest().requiresSecure())
-//            .authorizeRequests(authorize ->{
-//              try {
-//                authorize.anyRequest().authenticated()
-//                        .and()
-//                        .formLogin()
-//                        .loginPage("/login")
-//                        .permitAll()
-//                        .and()
-//                        .logout()
-//                        .permitAll();
-//              } catch (Exception e) {
-//                throw new RuntimeException(e);
-//              }
-//            })
-//            .build();
-//  }
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {

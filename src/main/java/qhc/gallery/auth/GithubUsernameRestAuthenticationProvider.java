@@ -19,7 +19,7 @@ import java.time.Duration;
 import java.util.Arrays;
 
 @Service
-public class GithubRestAuthenticationProvider implements AuthenticationProvider {
+public class GithubUsernameRestAuthenticationProvider implements AuthenticationProvider {
 
   public static final Logger LOGGER = LoggerFactory.getLogger(DogApiTask.class);
 
@@ -38,7 +38,7 @@ public class GithubRestAuthenticationProvider implements AuthenticationProvider 
     }
 
     if (github_user_info != null && github_user_info.login() != null && github_user_info.login().equals(name)) {
-      LOGGER.info("------------------auth success-------------------.");
+      LOGGER.info("github username rest auth success.");
       return new RememberMeAuthenticationToken(github_user_info.login(), github_user_info,
               Arrays.stream(HomeController.allUrls).map((s) -> (GrantedAuthority) () -> s).toList());
     }
