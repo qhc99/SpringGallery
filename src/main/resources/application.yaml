@@ -1,0 +1,49 @@
+
+#spring.devtools.restart.trigger-file="./.trigger"
+spring:
+
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+  data:
+    rest:
+      base-path: /api
+
+  datasource:
+    generate-unique-name: false
+    name: db_of_gallery
+
+  security:
+    user:
+      name: me
+      password: 123
+      roles: admin
+
+    oauth2:
+      client:
+        registration:
+          github:
+            clientId: ad4f2113560854e53881
+            client-secret: 9d4dcedafe9978b2b47235d9025e4f9848638090
+
+  thymeleaf:
+    cache: false
+
+
+management:
+  server:
+    port: 9001
+    address: 127.0.0.1
+
+
+server:
+  port: 8443
+  ssl:
+    key-store: "classpath:keystore//httpskey.p12"
+    key-alias: tomcathttps
+    key-store-type: PKCS12
+    key-password: 123456
+    key-store-password: 123456
+    enabled: true
